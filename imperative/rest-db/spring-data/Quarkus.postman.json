@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7690b52e-108a-4ce0-b02a-1d201ee2b894",
+		"_postman_id": "4bc7cb70-4859-412c-893a-5089a9f0a670",
 		"name": "Quarkus",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -153,7 +153,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a Player by Persist Method",
+					"name": "Update a Player by Save Method",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -167,13 +167,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/players/persist-method/10",
+							"raw": "{{baseUrl}}/players/save-method/10",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"players",
-								"persist-method",
+								"save-method",
 								"10"
 							]
 						}
@@ -436,7 +436,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a Team by Persist Method",
+					"name": "Update a Team by Save Method",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -450,13 +450,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/teams/persist-method/2",
+							"raw": "{{baseUrl}}/teams/save-method/2",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"teams",
-								"persist-method",
+								"save-method",
 								"2"
 							]
 						}
@@ -469,13 +469,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/teams/7",
+							"raw": "{{baseUrl}}/teams/6",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"teams",
-								"7"
+								"6"
 							]
 						}
 					},
@@ -590,14 +590,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/stadiums/team/6",
+							"raw": "{{baseUrl}}/stadiums/team/7",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"stadiums",
 								"team",
-								"6"
+								"7"
 							]
 						}
 					},
@@ -632,7 +632,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a Team by Persist Method",
+					"name": "Update a Team by Save Method",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -646,13 +646,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/stadiums/persist-method/4",
+							"raw": "{{baseUrl}}/stadiums/save-method/4",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"stadiums",
-								"persist-method",
+								"save-method",
 								"4"
 							]
 						}
@@ -808,7 +808,7 @@
 					"response": []
 				},
 				{
-					"name": "Update a Car by Persist Method",
+					"name": "Update a Car by Save Method",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -822,13 +822,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/cars/persist-method/2",
+							"raw": "{{baseUrl}}/cars/save-method/2",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"cars",
-								"persist-method",
+								"save-method",
 								"2"
 							]
 						}
@@ -841,13 +841,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/cars/1",
+							"raw": "{{baseUrl}}/cars/7",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"cars",
-								"1"
+								"7"
 							]
 						}
 					},
