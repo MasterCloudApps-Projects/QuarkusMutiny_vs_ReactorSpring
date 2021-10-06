@@ -146,7 +146,7 @@ public class TeamResource {
     }
 
     @PUT
-    @Path("/persist-method/{teamId}")
+    @Path("/save-method/{teamId}")
     @Transactional
     public Response updateTeamByPersistMethod(@PathParam("teamId") long teamId, Team updateTeam) {
         return this.teamRepository.findById(teamId)
