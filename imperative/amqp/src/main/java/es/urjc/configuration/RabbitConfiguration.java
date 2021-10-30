@@ -32,8 +32,8 @@ public class RabbitConfiguration {
             channel.queueBind(rabbitProperties.getQueueName(), rabbitProperties.getExchangeName(), rabbitProperties.getRouterKey());
 
             // Set listener service class
-            ListenerService customConsumer = new ListenerService(channel);
-            channel.basicConsume(rabbitProperties.getQueueName(), true, customConsumer);
+            ListenerService listenerService = new ListenerService(channel);
+            channel.basicConsume(rabbitProperties.getQueueName(), true, listenerService);
 
         } catch (IOException e) {
             throw new UncheckedIOException(e);
