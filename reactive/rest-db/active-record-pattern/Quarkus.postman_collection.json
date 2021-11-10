@@ -1,0 +1,877 @@
+{
+	"info": {
+		"_postman_id": "d500a0e2-34f6-4958-ba1f-1bde9e258650",
+		"name": "Quarkus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Players",
+			"item": [
+				{
+					"name": "Get All Players",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/players",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Players With All Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/players/details",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Player By Existing Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/players/Benzema",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"Benzema"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Player With All Details By Existing Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/players/Benzema/details",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"Benzema",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Player By No Existing Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/players/Pepito",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"Pepito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save a Player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juancho\",\n    \"goals\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/players",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Player By Update Method",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pepe\",\n    \"goals\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/players/update-method/10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"update-method",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Player by Persist Method",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juanito\",\n    \"goals\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/players/persist-method/10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"persist-method",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Player By Existing Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/players/13",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Player By No Existing Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/players/99999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"99999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Player By Existing Id With Team",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/players/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Car to Player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/players/3/cars/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"3",
+								"cars",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Car to Player",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/players/1/cars/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"players",
+								"1",
+								"cars",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teams",
+			"item": [
+				{
+					"name": "Get All Teams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Team By Existing Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/Real Madrid FC",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"Real Madrid FC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Team By No Existing Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/Sevilla",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"Sevilla"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save a Team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Getafe\",\n    \"ranking\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Player to Team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/6/players/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"6",
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a Player from Team",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/1/players/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"1",
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Team By Update Method",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"RealMadridFC\",\n    \"ranking\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams/update-method/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"update-method",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Team by Persist Method",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Barça\",\n    \"ranking\": 11\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams/persist-method/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"persist-method",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Team By Existing Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Team By No Existing Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/99999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"99999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Team By Existing Id With Players",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stadiums",
+			"item": [
+				{
+					"name": "Get All Stadium",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stadiums",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stadiums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stadium By Existing Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stadiums/Santiago Bernabeu",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stadiums",
+								"Santiago Bernabeu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stadium By No Existing Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stadiums/Molinon",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stadiums",
+								"Molinon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save a Stadium",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Mestalla\",\n    \"capacity\": 7000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stadiums/team/6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stadiums",
+								"team",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Stadium By Update Method",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sanchez Pijuan\",\n    \"capacity\": 5000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stadiums/update-method/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stadiums",
+								"update-method",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Team by Persist Method",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Coliseo\",\n    \"capacity\": 4000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stadiums/persist-method/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stadiums",
+								"persist-method",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Stadium By Existing Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stadiums/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stadiums",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Stadium By No Existing Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stadiums/99999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stadiums",
+								"99999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "Get All Cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cars",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Car By Existing License Plate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cars/4ENX781",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								"4ENX781"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cars By No Existing License Plate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cars/0000AAA",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								"0000AAA"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save a Car",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licencePlate\": \"8CEU498\",\n    \"brand\": \"Hyundai\",\n    \"model\": \"Santa Fe\",\n    \"price\": 18000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Car By Update Method",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licencePlate\": \"BHT7777\",\n    \"brand\": \"BMW\",\n    \"model\": \"320Xi\",\n    \"price\": 65000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars/update-method/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								"update-method",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Car by Persist Method",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licencePlate\": \"7VPZ801\",\n    \"brand\": \"Jaguar\",\n    \"model\": \"xe\",\n    \"price\": 85000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars/persist-method/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								"persist-method",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Car By Existing Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cars/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Car By No Existing Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cars/9999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								"9999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
