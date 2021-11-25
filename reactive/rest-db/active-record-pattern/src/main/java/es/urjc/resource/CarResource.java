@@ -6,7 +6,6 @@ import es.urjc.entity.Car;
 import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
-import io.smallrye.mutiny.operators.uni.builders.UniCreateFromItemSupplier;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -24,13 +23,11 @@ public class CarResource {
     @Path("/")
     public Multi<CarBasicInformation> getAllCars() {
 
-        // @formatter:off
         return Car.listAll()
                 .map(carList -> carList.stream()
-                    .map(panacheEntity -> (Car) panacheEntity)
-                    .map(this::getCarBasicInformation))
+                        .map(panacheEntity -> (Car) panacheEntity)
+                        .map(this::getCarBasicInformation))
                 .onItem().transformToMulti(carStream -> Multi.createFrom().items(carStream));
-        // @formatter:on
     }
 
     @GET
