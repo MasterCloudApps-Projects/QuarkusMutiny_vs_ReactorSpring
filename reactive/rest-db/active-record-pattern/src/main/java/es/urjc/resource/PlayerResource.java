@@ -8,7 +8,6 @@ import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import org.hibernate.reactive.mutiny.Mutiny;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -174,9 +173,9 @@ public class PlayerResource {
                 .flatMap(car -> getPlayer(playerId)
                         .flatMap(player -> {
                             car.setPlayer(player);
-                            car.persist();
-                            return getPlayerDetails(player.getName());
-                        }));
+                            return car.persistAndFlush().replaceWith(player);
+                        })
+                        .chain(player -> getPlayerDetails(player.getName())));
 
     }
 
@@ -194,11 +193,11 @@ public class PlayerResource {
                     return Uni.createFrom().item(car);
                 })
                 .flatMap(car -> getPlayer(playerId)
-                        .invoke(player -> {
+                        .flatMap(player -> {
                             car.setPlayer(null);
-                            car.persist();
-                        }))
-                .flatMap(player -> getPlayerDetails(player.getName()));
+                            return car.persistAndFlush().replaceWith(player);
+                        })
+                        .chain(player -> getPlayerDetails(player.getName())));
 
     }
 

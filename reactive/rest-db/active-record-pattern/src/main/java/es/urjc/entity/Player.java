@@ -5,12 +5,10 @@ import io.smallrye.mutiny.Uni;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Entity
 @Data
@@ -26,7 +24,7 @@ public class Player extends PanacheEntityBase {
     private String name;
     private int goals;
 
-    @OneToMany(mappedBy = "player")
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL)
     private List<Car> cars;
 
     @ManyToMany(cascade = CascadeType.ALL)
