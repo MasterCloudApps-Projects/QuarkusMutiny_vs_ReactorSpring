@@ -22,7 +22,6 @@ public class CarResource {
     @GET
     @Path("/")
     public Multi<CarBasicInformation> getAllCars() {
-
         return Car.listAll()
                 .map(carList -> carList.stream()
                         .map(panacheEntity -> (Car) panacheEntity)
@@ -35,12 +34,10 @@ public class CarResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Uni<Response> getCar(@PathParam("licencePlate") String licensePlate) {
 
-        // @formatter:off
         return Car.findByLicencePlate(licensePlate)
                 .onItem().ifNotNull().transform(this::getCarBasicInformation)
                 .onItem().ifNotNull().transform(carBasicInformation -> ok(carBasicInformation).build())
                 .onItem().ifNull().failWith(this::failWithNotFoundCarException);
-        // @formatter:on
     }
 
     @POST
@@ -48,15 +45,13 @@ public class CarResource {
     @ReactiveTransactional
     public Uni<Response> saveCar(Car newCar) {
 
-        // @formatter:off
         return Car.findByLicencePlate(newCar.getLicencePlate())
                 .onItem().ifNotNull().failWith(this::failWithBadRequestExistingLicencePlateException)
                 .onItem().ifNull().continueWith(newCar)
-                    .flatMap(car -> car.persist())
+                .flatMap(car -> car.persist())
                 .onItem().castTo(Car.class)
-                    .map(Car::getLicencePlate)
-                    .flatMap(this::getCar);
-        // @formatter:on
+                .map(Car::getLicencePlate)
+                .flatMap(this::getCar);
     }
 
     @PUT
@@ -64,7 +59,6 @@ public class CarResource {
     @ReactiveTransactional
     public Uni<Response> updateCarByUpdateMethod(@PathParam("carId") long carId, Car updateCar) {
 
-        // @formatter:off
         return Car.update("licencePlate = ?1, brand = ?2, model = ?3, price = ?4 where id = ?5",
                 updateCar.getLicencePlate(), updateCar.getBrand(), updateCar.getModel(),
                 updateCar.getPrice(), carId)
@@ -75,7 +69,6 @@ public class CarResource {
                     }
                     throw failWithNotFoundCarException();
                 });
-        // @formatter:on
     }
 
     @PUT
@@ -83,16 +76,15 @@ public class CarResource {
     @ReactiveTransactional
     public Uni<Response> updateCarByPersistMethod(@PathParam("carId") long carId, Car updateCar) {
 
-        // @formatter:off
         return Car.findById(carId)
                 .map(Car.class::cast)
                 .onItem().ifNotNull().transform(car -> {
-                        car.setLicencePlate(updateCar.getLicencePlate());
-                        car.setBrand(updateCar.getBrand());
-                        car.setModel(updateCar.getModel());
-                        car.setPrice(updateCar.getPrice());
-                        return car;
-                    })
+                    car.setLicencePlate(updateCar.getLicencePlate());
+                    car.setBrand(updateCar.getBrand());
+                    car.setModel(updateCar.getModel());
+                    car.setPrice(updateCar.getPrice());
+                    return car;
+                })
                 .onItem().ifNull().failWith(this::failWithNotFoundCarException)
                 .onItem().transformToUni(updatedCar -> updatedCar.persist())
                 .onItem().castTo(Car.class)
@@ -102,7 +94,6 @@ public class CarResource {
                     }
                     throw new InternalServerErrorException();
                 });
-        // @formatter:on
     }
 
     @DELETE
@@ -110,7 +101,6 @@ public class CarResource {
     @ReactiveTransactional
     public Uni<Response> deleteCar(@PathParam("carId") long carId) {
 
-        // @formatter:off
         return Car.findById(carId)
                 .map(Car.class::cast)
                 .onItem().ifNotNull().transformToUni(car -> {
@@ -129,7 +119,6 @@ public class CarResource {
 
                 })
                 .onItem().ifNull().failWith(this::failWithNotFoundCarException);
-        // @formatter:on
     }
 
     private CarBasicInformation getCarBasicInformation(Car car) {

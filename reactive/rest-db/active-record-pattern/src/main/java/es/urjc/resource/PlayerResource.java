@@ -48,15 +48,13 @@ public class PlayerResource {
     @ReactiveTransactional
     public Uni<Response> savePlayer(Player newPlayer) {
 
-        // @formatter:off
         return Player.findByName(newPlayer.getName())
                 .onItem().ifNotNull().failWith(this::failWithBadRequestExistingPlayerException)
                 .onItem().ifNull().continueWith(newPlayer)
-                    .flatMap(player -> player.persist())
+                .flatMap(player -> player.persist())
                 .onItem().castTo(Player.class)
-                    .map(Player::getName)
-                    .flatMap(this::getPlayer);
-        // @formatter:on
+                .map(Player::getName)
+                .flatMap(this::getPlayer);
     }
 
     @PUT
@@ -64,7 +62,6 @@ public class PlayerResource {
     @ReactiveTransactional
     public Uni<Response> updatePlayerByUpdateMethod(@PathParam("playerId") long playerId, Player updatePlayer) {
 
-        // @formatter:off
         return Player.update("name = ?1, goals = ?2 where id = ?3", updatePlayer.getName(), updatePlayer.getGoals(), playerId)
                 .onItem()
                 .transformToUni(numberOfPlayerUpdated -> {
@@ -73,8 +70,6 @@ public class PlayerResource {
                     }
                     throw failWithNotFoundPlayerException();
                 });
-        // @formatter:on
-
     }
 
     @PUT
@@ -82,7 +77,6 @@ public class PlayerResource {
     @ReactiveTransactional
     public Uni<Response> updatePlayerByPersistMethod(@PathParam("playerId") long playerId, Player updatePlayer) {
 
-        // @formatter:off
         return Player.findById(playerId)
                 .map(Player.class::cast)
                 .onItem().ifNotNull().transform(player -> {
@@ -99,8 +93,6 @@ public class PlayerResource {
                     }
                     throw new InternalServerErrorException();
                 });
-        // @formatter:on
-
     }
 
     @DELETE
@@ -154,7 +146,6 @@ public class PlayerResource {
                     return new PlayerFullInformation(player.getId(), player.getName(), player.getGoals(), teams, cars);
                 })
                 .map(playerFullInformation -> ok(playerFullInformation).build());
-
     }
 
     @POST

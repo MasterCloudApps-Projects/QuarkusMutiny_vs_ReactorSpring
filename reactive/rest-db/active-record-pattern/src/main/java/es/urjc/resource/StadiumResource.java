@@ -3,20 +3,18 @@ package es.urjc.resource;
 import es.urjc.dto.ErrorInformation;
 import es.urjc.dto.StadiumFullInformation;
 import es.urjc.dto.TeamBasicInformation;
-import es.urjc.entity.Player;
 import es.urjc.entity.Stadium;
 import es.urjc.entity.Team;
 import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
-import org.hibernate.reactive.mutiny.Mutiny;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-import static javax.ws.rs.core.Response.*;
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
+import static javax.ws.rs.core.Response.*;
 
 @Path("/stadiums")
 public class StadiumResource {
@@ -39,7 +37,6 @@ public class StadiumResource {
     @Path("/{name}")
     public Uni<Response> getStadium(@PathParam("name") String name) {
 
-        // @formatter:off
         return Stadium.findByName(name)
                 .onItem().ifNotNull().transform(stadium -> {
                     TeamBasicInformation team = getTeamBasicInformation(stadium);
@@ -47,7 +44,6 @@ public class StadiumResource {
                 })
                 .onItem().ifNotNull().transform(stadiumFullInformation -> ok(stadiumFullInformation).build())
                 .onItem().ifNull().failWith(this::failWithNotFoundStadiumException);
-        // @formatter:on
 
     }
 
@@ -56,21 +52,18 @@ public class StadiumResource {
     @ReactiveTransactional
     public Uni<Response> saveStadium(@PathParam("teamId") long teamId, Stadium newStadium) {
 
-        // @formatter:off
         return Stadium.findByName(newStadium.getName())
                 .onItem().ifNotNull().failWith(this::failWithBadRequestExistingStadiumException)
                 .onItem().ifNull().continueWith(newStadium)
                 .flatMap(stadium ->
                         Team.findById(teamId)
-                            .onItem().castTo(Team.class)
-                            .onItem().ifNull().failWith(this::failWithNotFoundTeamException)
-                            .onItem().ifNotNull().transformToUni(team -> {
-                                stadium.setTeam(team);
-                                return stadium.persist();
-                            })
-                            .chain(() -> getStadium(newStadium.getName())));
-        // @formatter:on
-
+                                .onItem().castTo(Team.class)
+                                .onItem().ifNull().failWith(this::failWithNotFoundTeamException)
+                                .onItem().ifNotNull().transformToUni(team -> {
+                                    stadium.setTeam(team);
+                                    return stadium.persist();
+                                })
+                                .chain(() -> getStadium(newStadium.getName())));
     }
 
     @PUT
@@ -78,7 +71,6 @@ public class StadiumResource {
     @ReactiveTransactional
     public Uni<Response> updateStadiumByUpdateMethod(@PathParam("stadiumId") long stadiumId, Stadium updateStadium) {
 
-        // @formatter:off
         return Stadium.update("name = ?1, capacity = ?2 where id = ?3", updateStadium.getName(),
                     updateStadium.getCapacity(), stadiumId)
                 .onItem()
@@ -88,7 +80,6 @@ public class StadiumResource {
                     }
                     throw failWithNotFoundStadiumException();
                 });
-        // @formatter:on
     }
 
     @PUT
@@ -96,7 +87,6 @@ public class StadiumResource {
     @ReactiveTransactional
     public Uni<Response> updateStadiumByPersistMethod(@PathParam("stadiumId") long stadiumId, Stadium updateStadium) {
 
-        // @formatter:off
         return Stadium.findById(stadiumId)
                 .map(Stadium.class::cast)
                 .onItem().ifNotNull().transform(stadium -> {
@@ -113,8 +103,6 @@ public class StadiumResource {
                     }
                     throw new InternalServerErrorException();
                 });
-        // @formatter:on
-
     }
 
     @DELETE
@@ -122,7 +110,6 @@ public class StadiumResource {
     @ReactiveTransactional
     public Uni<Response> deleteTeam(@PathParam("stadiumId") long stadiumId) {
 
-        // @formatter:off
         return Stadium.findById(stadiumId)
                 .map(Stadium.class::cast)
                 .flatMap(stadium -> Stadium.deleteById(stadiumId))
@@ -130,7 +117,6 @@ public class StadiumResource {
                         ? Uni.createFrom().item(noContent().build())
                         : Uni.createFrom().nullItem())
                 .onItem().ifNull().failWith(this::failWithNotFoundStadiumException);
-        // @formatter:on
     }
 
     private TeamBasicInformation getTeamBasicInformation(Stadium stadium) {
