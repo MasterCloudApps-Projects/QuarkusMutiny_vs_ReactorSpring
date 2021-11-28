@@ -63,8 +63,7 @@ public class PlayerResource {
     public Uni<Response> updatePlayerByUpdateMethod(@PathParam("playerId") long playerId, Player updatePlayer) {
 
         return Player.update("name = ?1, goals = ?2 where id = ?3", updatePlayer.getName(), updatePlayer.getGoals(), playerId)
-                .onItem()
-                .transformToUni(numberOfPlayerUpdated -> {
+                .chain(numberOfPlayerUpdated -> {
                     if (numberOfPlayerUpdated == 1) {
                         return getPlayer(updatePlayer.getName());
                     }
@@ -85,9 +84,9 @@ public class PlayerResource {
                     return player;
                 })
                 .onItem().ifNull().failWith(this::failWithNotFoundPlayerException)
-                .onItem().transformToUni(updatedPlayer -> updatedPlayer.persist())
+                .chain(updatedPlayer -> updatedPlayer.persist())
                 .onItem().castTo(Player.class)
-                .onItem().transformToUni(updatedPlayer -> {
+                .chain(updatedPlayer -> {
                     if (updatedPlayer.isPersistent()) {
                         return getPlayer(updatedPlayer.getName());
                     }
@@ -100,7 +99,6 @@ public class PlayerResource {
     @ReactiveTransactional
     public Uni<Response> deletePlayer(@PathParam("playerId") long playerId) {
 
-        // @formatter:off
         return getPlayer(playerId)
                 .invoke(player -> {
                     Mutiny.fetch(player.getTeams())
@@ -112,7 +110,6 @@ public class PlayerResource {
                         ? Uni.createFrom().item(noContent().build())
                         : Uni.createFrom().nullItem())
                 .onItem().ifNull().failWith(this::failWithNotFoundPlayerException);
-        // @formatter:on
     }
 
     @GET

@@ -60,10 +60,9 @@ public class CarResource {
     public Uni<Response> updateCarByUpdateMethod(@PathParam("carId") long carId, Car updateCar) {
 
         return Car.update("licencePlate = ?1, brand = ?2, model = ?3, price = ?4 where id = ?5",
-                updateCar.getLicencePlate(), updateCar.getBrand(), updateCar.getModel(),
-                updateCar.getPrice(), carId)
-            .onItem()
-                .transformToUni(numberOfCarUpdated -> {
+                        updateCar.getLicencePlate(), updateCar.getBrand(), updateCar.getModel(),
+                        updateCar.getPrice(), carId)
+                .chain(numberOfCarUpdated -> {
                     if (numberOfCarUpdated == 1) {
                         return getCar(updateCar.getLicencePlate());
                     }
@@ -86,9 +85,9 @@ public class CarResource {
                     return car;
                 })
                 .onItem().ifNull().failWith(this::failWithNotFoundCarException)
-                .onItem().transformToUni(updatedCar -> updatedCar.persist())
+                .chain(updatedCar -> updatedCar.persist())
                 .onItem().castTo(Car.class)
-                .onItem().transformToUni(updatedCar -> {
+                .chain(updatedCar -> {
                     if (updatedCar.isPersistent()) {
                         return getCar(updatedCar.getLicencePlate());
                     }
@@ -111,11 +110,7 @@ public class CarResource {
                                 .onItem().ifNull().failWith(this::failWithNotFoundCarException);
                     }
 
-                    Response badRequestResponse = status(BAD_REQUEST)
-                            .entity(new ErrorInformation("Car is associated to player yet"))
-                            .build();
-
-                    throw new BadRequestException(badRequestResponse);
+                    throw failWithBadRequestCarIsAssociatedToPlayerYet();
 
                 })
                 .onItem().ifNull().failWith(this::failWithNotFoundCarException);
@@ -134,6 +129,12 @@ public class CarResource {
 
     private BadRequestException failWithBadRequestExistingLicencePlateException() {
         ErrorInformation errorInformation = new ErrorInformation("Already exists licence plate");
+        Response badRequestResponse = status(BAD_REQUEST).entity(errorInformation).build();
+        return new BadRequestException(badRequestResponse);
+    }
+
+    private BadRequestException failWithBadRequestCarIsAssociatedToPlayerYet() {
+        ErrorInformation errorInformation = new ErrorInformation("Car is associated to player yet");
         Response badRequestResponse = status(BAD_REQUEST).entity(errorInformation).build();
         return new BadRequestException(badRequestResponse);
     }

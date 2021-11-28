@@ -31,12 +31,12 @@ public class TeamResource {
                 .map(teamList -> teamList.stream().map(panacheEntity -> (Team) panacheEntity))
                 .onItem().transformToMulti(teamFullInformationStream -> Multi.createFrom().items(teamFullInformationStream))
                 .map(team ->
-                        getPlayersBasicInformation(team).map(basicInformations ->
+                        getPlayersBasicInformation(team).map(playerBasicInformation ->
                                         TeamFullInformation.builder()
                                                 .id(team.getId())
                                                 .name(team.getName())
                                                 .ranking(team.getRanking())
-                                                .players(basicInformations))
+                                                .players(playerBasicInformation))
                                 .flatMap(teamFullInformationBuilder ->
                                         getStadiumBasicInformation(team).map(teamFullInformationBuilder::stadium))
                                 .map(TeamFullInformation.TeamFullInformationBuilder::build))
@@ -49,16 +49,16 @@ public class TeamResource {
 
         return Team.findByName(name)
                 .onItem().ifNull().failWith(this::failWithNotFoundTeamException)
-                .onItem().ifNotNull()
-                .transformToUni(team -> getPlayersBasicInformation(team)
-                        .map(playerBasicInformation -> TeamFullInformation.builder()
-                                .id(team.getId())
-                                .name(team.getName())
-                                .ranking(team.getRanking())
-                                .players(playerBasicInformation))
-                        .flatMap(teamFullInformationBuilder ->
-                                getStadiumBasicInformation(team).map(teamFullInformationBuilder::stadium))
-                        .map(TeamFullInformation.TeamFullInformationBuilder::build))
+                .onItem().ifNotNull().transformToUni(team ->
+                        getPlayersBasicInformation(team)
+                                .map(playerBasicInformation -> TeamFullInformation.builder()
+                                        .id(team.getId())
+                                        .name(team.getName())
+                                        .ranking(team.getRanking())
+                                        .players(playerBasicInformation))
+                                .flatMap(teamFullInformationBuilder ->
+                                        getStadiumBasicInformation(team).map(teamFullInformationBuilder::stadium))
+                                .map(TeamFullInformation.TeamFullInformationBuilder::build))
                 .map(teamFullInformation -> ok(teamFullInformation).build());
     }
 
@@ -67,16 +67,13 @@ public class TeamResource {
     @ReactiveTransactional
     public Uni<Response> saveTeam(Team newTeam) {
 
-        // @formatter:off
         return Team.findByName(newTeam.getName())
                 .onItem().ifNotNull().failWith(this::failWithBadRequestExistingTeamException)
                 .onItem().ifNull().continueWith(newTeam)
                 .flatMap(team -> team.persist())
                 .onItem().castTo(Team.class)
                 .map(Team::getName)
-                .flatMap(this::getTeam);
-        // @formatter:on
-
+                .chain(this::getTeam);
     }
 
     @POST
@@ -98,8 +95,8 @@ public class TeamResource {
                         .map(playerBasicInformation -> new TeamFullInformation(
                                 team.getId(), team.getName(),
                                 team.getRanking(), playerBasicInformation)))
-                .map(teamFullInformation -> ok(teamFullInformation).build());
-
+                .map(Response::ok)
+                .map(ResponseBuilder::build);
     }
 
     @DELETE
@@ -121,8 +118,8 @@ public class TeamResource {
                         .map(playerBasicInformation -> new TeamFullInformation(
                                 team.getId(), team.getName(),
                                 team.getRanking(), playerBasicInformation)))
-                .map(teamFullInformation -> ok(teamFullInformation).build());
-
+                .map(Response::ok)
+                .map(ResponseBuilder::build);
     }
 
 
@@ -154,9 +151,9 @@ public class TeamResource {
                     return team;
                 })
                 .onItem().ifNull().failWith(this::failWithNotFoundTeamException)
-                .onItem().transformToUni(updatedTeam -> updatedTeam.persist())
+                .chain(updatedTeam -> updatedTeam.persist())
                 .onItem().castTo(Team.class)
-                .onItem().transformToUni(updatedTeam -> {
+                .chain(updatedTeam -> {
                     if (updatedTeam.isPersistent()) {
                         return getTeam(updatedTeam.getName());
                     }

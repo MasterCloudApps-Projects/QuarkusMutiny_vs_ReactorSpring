@@ -72,9 +72,8 @@ public class StadiumResource {
     public Uni<Response> updateStadiumByUpdateMethod(@PathParam("stadiumId") long stadiumId, Stadium updateStadium) {
 
         return Stadium.update("name = ?1, capacity = ?2 where id = ?3", updateStadium.getName(),
-                    updateStadium.getCapacity(), stadiumId)
-                .onItem()
-                .transformToUni(numberOfPlayerUpdated -> {
+                        updateStadium.getCapacity(), stadiumId)
+                .chain(numberOfPlayerUpdated -> {
                     if (numberOfPlayerUpdated == 1) {
                         return getStadium(updateStadium.getName());
                     }
@@ -95,9 +94,9 @@ public class StadiumResource {
                     return stadium;
                 })
                 .onItem().ifNull().failWith(this::failWithNotFoundStadiumException)
-                .onItem().transformToUni(updatedStadium -> updatedStadium.persist())
+                .chain(updatedStadium -> updatedStadium.persist())
                 .onItem().castTo(Stadium.class)
-                .onItem().transformToUni(updatedStadium -> {
+                .chain(updatedStadium -> {
                     if (updatedStadium.isPersistent()) {
                         return getStadium(updatedStadium.getName());
                     }
