@@ -22,7 +22,7 @@ import static javax.ws.rs.core.Response.*;
 public class PlayerResource {
 
     @GET
-    @Path("")
+    @Path("/")
     public Multi<PlayerBasicInformation> getAllPlayer() {
 
         return Player.listAll()
@@ -44,7 +44,7 @@ public class PlayerResource {
     }
 
     @POST
-    @Path("")
+    @Path("/")
     @ReactiveTransactional
     public Uni<Response> savePlayer(Player newPlayer) {
 
