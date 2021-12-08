@@ -7,9 +7,7 @@ import io.smallrye.mutiny.Uni;
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Path("/users")
 @ApplicationScoped
@@ -28,8 +26,8 @@ public class RoomResource {
     }
 
     @GET
-    public Multi<String> getConnectedUsers() {
-        return Multi.createFrom().iterable(users.values()).map(User::getUsername);
+    public Multi<User> getConnectedUsers() {
+        return Multi.createFrom().iterable(users.values());
     }
 
     @GET
