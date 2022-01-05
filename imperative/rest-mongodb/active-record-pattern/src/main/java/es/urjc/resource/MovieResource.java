@@ -4,7 +4,6 @@ import es.urjc.Helper;
 import es.urjc.dto.request.MovieRequest;
 import es.urjc.dto.response.MovieResponse;
 import es.urjc.entity.Movie;
-import io.quarkus.panache.common.Sort;
 import org.bson.types.ObjectId;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
@@ -44,10 +43,7 @@ public class MovieResource {
     @GET
     @Path("/")
     public List<MovieResponse> getMoviesOrderByRating(@QueryParam("page") Optional<Integer> page) {
-        return Movie.findAll(Sort.descending("imdb.rating"))
-                .page(page.orElse(DEFAULT_PAGE_NUMBER), PAGE_SIZE)
-                .stream()
-                .map(Movie.class::cast)
+        return Movie.findByPage(page.orElse(DEFAULT_PAGE_NUMBER), PAGE_SIZE).stream()
                 .map(Helper::convertToDto)
                 .collect(Collectors.toList());
     }

@@ -2,6 +2,7 @@ package es.urjc.entity;
 
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
 import io.quarkus.mongodb.panache.common.MongoEntity;
+import io.quarkus.panache.common.Sort;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -43,7 +44,7 @@ public class Movie extends PanacheMongoEntity {
     @BsonProperty("tomatoes")
     private Tomatoes tomatoes;
 
-    public ObjectId getId(){
+    public ObjectId getId() {
         return super.id;
     }
 
@@ -51,4 +52,7 @@ public class Movie extends PanacheMongoEntity {
         super.id = id;
     }
 
+    public static List<Movie> findByPage(Integer pageNumber, Integer pageSize) {
+        return Movie.findAll(Sort.descending("imdb.rating")).page(pageNumber, pageSize).list();
+    }
 }
