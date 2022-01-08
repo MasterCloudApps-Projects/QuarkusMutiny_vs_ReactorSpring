@@ -1,0 +1,20 @@
+config:
+  target: "http://0.0.0.0:8080"
+  http:
+    pool: 10
+  phases:
+    - duration: 60
+      arrivalRate: 20
+      name: Warm up
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 250
+      name: Ramp up load
+    - duration: 300
+      arrivalRate: 300
+      name: Sustained load
+
+scenarios:
+  - flow:
+    - get:
+        url: "/"
