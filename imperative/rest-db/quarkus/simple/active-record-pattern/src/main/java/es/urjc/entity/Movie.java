@@ -22,7 +22,7 @@ public class Movie extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
     private String poster;
     private String title;
     private Integer releasedYear;
