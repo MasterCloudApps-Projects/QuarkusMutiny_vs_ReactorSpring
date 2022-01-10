@@ -1,6 +1,6 @@
 create table movies
 (
-    id           int auto_increment
+    id           bigint auto_increment
         primary key,
     poster       varchar(255) null,
     title        varchar(255) null,
@@ -9,7 +9,7 @@ create table movies
     runtime      varchar(255) null,
     genre        varchar(255) null,
     rating       double       null,
-    overview     text         null,
+    overview     varchar(500) null,
     director     varchar(255) null
 );
 
