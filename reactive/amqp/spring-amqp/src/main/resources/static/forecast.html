@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forecast</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly-additions.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Forecast Cities</h2>
+            <input id="city"/>
+            <button class="btn btn-info" id="request-forecast">Request Forecast</button>
+            <div class="forecast"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $("#request-forecast").click((event) => {
+        var city = $("#city").val();
+        var data = JSON.stringify({name: city});
+        $("#city").val('');
+        fetch("/forecast", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: data
+        })
+            .then(res => res.json())
+            .then(({id, city}) => {
+                var row = $(`<h4 class='col-md-12' id='${id}'>City <i>${city}</i>: <strong>Pending</strong></h4>`);
+                $(".forecast").append(row);
+            });
+    });
+    var source = new EventSource("/forecast");
+    source.onmessage = (event) => {
+        var json = JSON.parse(event.data);
+        $(`#${json.id}`).html(function (index, html) {
+            return html.replace("Pending", `${json.weather}`);
+        });
+    };
+</script>
+</html>
