@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "urjc.mastercloudapps.quarkus.spring.examples";
+option java_outer_classname = "GeneratorProto";
+
+package generator;
+
+service RandomNumberGenerator {
+  rpc GenerateNumber (GenerateNumberRequest) returns (GenerateNumberResponse){}
+}
+
+message GenerateNumberRequest {
+  int32 number = 1;
+}
+
+message GenerateNumberResponse {
+  int32 number = 1;
+}
