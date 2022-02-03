@@ -1,18 +1,30 @@
-# Getting Started
+# Spring and WebSockets
 
-### Reference Documentation
+This project is based to [Spring Framework](https://spring.io/).
 
-For further reference, please consider the following sections:
+The application provides a chat room where different users can connect in a room and chat with each other. But we can find some differences with Quarkus. 
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.6.2/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.6.2/maven-plugin/reference/html/#build-image)
-* [WebSocket](https://docs.spring.io/spring-boot/docs/2.6.2/reference/htmlsingle/#boot-features-websockets)
+Here, we are using [STOMP](https://stomp.github.io/stomp-specification-1.2.html#Abstract) and [SockJS](https://github.com/sockjs/sockjs-client) as well, the reason for this is because Spring "recommends" to use this configuration instead of using the raw WebSocket API. This particular configuration does more dificult to undestand but at the same time gives more powerful.
 
-### Guides
+A quick resume:
+* **STOMP (Simple Text Oriented Messaging Protocol)**: is a text-oriented protocol that provides headers and body, and works as messaging brokers. This is useful because the clients can subscribe to any topic.
+* **SockJS**: tries to use native WebSockets, and only if it can't it tries to use another substitute protocol.
 
-The following guides illustrate how to use some features concretely:
+## Set Up ⚙
 
-* [Using WebSocket to build an interactive web application](https://spring.io/guides/gs/messaging-stomp-websocket/)
+You must have installed on your machine:
+* JDK 11 version
+* Apache Maven 3.8.1
 
-https://tranhoangminh.wordpress.com/2020/12/29/basic-between-websocket-stomp-and-sockjs-with-spring-framework/
+## Start Up 🛠
+
+You can run the application as follows:
+
+```bash
+./mvnw spring-boot:run
+```
+
+## Testing 🔍
+
+The project provides user interface to [try it](http://localhost:8080). You can open some tabs in your browser, connect
+with different names and send some messages to see how it works
