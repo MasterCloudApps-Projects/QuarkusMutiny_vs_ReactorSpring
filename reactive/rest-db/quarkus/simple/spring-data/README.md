@@ -1,5 +1,5 @@
-# Currently Unsupported
+# Quarkus Mutiny API Rest and Spring Data JPA
 
-The Quarkus team is exploring various alternatives to bridging the gap between the JPA and Reactive worlds.
+Currently is unsupported, the Quarkus team is exploring various alternatives to bridging the gap between the JPA and Reactive worlds.
 
 For more information click [here](https://quarkus.io/guides/spring-data-jpa#what-is-currently-unsupported)
