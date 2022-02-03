@@ -1,62 +1,57 @@
-# repository-pattern Project
+# Quarkus API Rest and Hibernate ORM with Panache
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This project is built using the [Quarkus Framework](https://quarkus.io/).
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+The application exposes an API Rest, which uses [RESTEasy](https://resteasy.dev/) implementation of the JAX-RS specification, that is connected to MySQL database using *Panache*,
+a library similar to Spring Data JPA, simplifying the most common database operations.
 
-## Running the application in dev mode
+Mention Panache has two difference implementations, the repository pattern and the active record pattern, in this example we use the repository pattern, this means that all database operations are contented in repository layer, it's so common to see this in Spring Data JPA.
 
-You can run your application in dev mode that enables live coding using:
+## Set Up ⚙
 
-```shell script
-./mvnw compile quarkus:dev
+You must have installed on your machine:
+* JDK 11 version
+* Apache Maven 3.8.1
+* Docker
+
+If you already have it installed, you must run the following command:
+
+```bash
+docker run --name mysql-tfm -d -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=imdb -p 3306:3306 mysql:8.0.26
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+Next, you should wait a few seconds (5s - 10s) for MySQL will finish booting. Now, you need to [download](https://raw.githubusercontent.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/main/imperative/rest-db/imdb_movies.sql) the script for the database, then you can execute the following command:
 
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
+```bash
+docker exec -i mysql-tfm mysql -uroot -ppassword imdb < imdb_movies.sql
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory. Be aware that it’s not an _über-jar_ as
-the dependencies are copied into the `target/quarkus-app/lib/` directory.
+## Start Up 🛠
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+There are two option:
 
-If you want to build an _über-jar_, execute the following command:
+1. Development
 
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+    You can run your application in dev mode:
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+    ```bash
+    ./mvnw clean compile quarkus:dev
+    ```
 
-## Creating a native executable
+2. Production
 
-You can create a native executable using:
+    First, the application must be packaged using:
 
-```shell script
-./mvnw package -Pnative
-```
+    ```bash
+    ./mvnw package
+    ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+    It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory. Now, the only thing left to do is to run the application:
 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
+    ```bash
+    java -jar target/quarkus-app/quarkus-run.jar
+    ```
 
-You can then execute your native executable with: `./target/repository-pattern-1.0-SNAPSHOT-runner`
+## Testing 🔍
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Provided Code
-
-### RESTEasy JAX-RS
-
-Easily start your RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+The application has an OpenAPI dependency, providing a Swagger interface to make requests against to the API, click [here](http://localhost:8080/swagger-ui/) to test it.
