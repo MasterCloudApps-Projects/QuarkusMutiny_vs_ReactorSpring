@@ -27,9 +27,9 @@ docker exec -i mysql-tfm mysql -uroot -ppassword imdb < imdb_movies.sql
 
 You can run the application as follows:
 
-    ```bash
-    ./mvnw spring-boot:run
-    ```
+```bash
+./mvnw spring-boot:run
+```
 
 ## Testing 🔍
 
