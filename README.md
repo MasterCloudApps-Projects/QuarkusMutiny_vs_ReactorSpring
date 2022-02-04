@@ -16,10 +16,14 @@ Here, we are going to deal with two flavors, the imperative part which is the mo
 |AMQP|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/imperative/amqp/quarkus-amqp)|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/imperative/amqp/spring-amqp)|
 
 ## Reactive
+
 |                |QUARKUS                        |SPRING                       |
 |----------------|-------------------------------|-----------------------------|
 |REST to DB|<ul><li>[Panache - Active Record](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/rest-db/quarkus/simple/active-record-pattern)</li><li>[Panache - Repository](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/rest-db/quarkus/simple/repository-pattern)</li><li>[Spring Data JPA](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/rest-db/quarkus/simple/spring-data)</li></ul>|[Spring Data JPA](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/rest-db/spring/spring-data)|
-|REST to REST|Go to Repo|Go to Repo|
+|REST to REST|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/rest-client/quarkus)|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/rest-client/spring)|
 |WebSocket|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/websockets/quarkus-websockets)|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/websockets/spring-websockets)|
 |GRPC|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/grpc-quarkus)|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/grpc-spring)|
 |AMQP|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/amqp/quarkus-amqp)|[Go to Repo](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/reactive/amqp/spring-amqp)|
+
+
+

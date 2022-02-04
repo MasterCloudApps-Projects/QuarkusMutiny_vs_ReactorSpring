@@ -1,8 +1,8 @@
-# Quarkus and gRPC
+# Spring and gRPC
 
-This project is built using the [Quarkus Framework](https://quarkus.io/).
+This project is built using the [Spring Boot Framework](https://spring.io/).
 
-In this case, **Quarkus** is combined with **gRPC**, which is a modern open source high performance Remote Procedure
+In this case, **Spring** is combined with **gRPC**, which is a modern open source high performance Remote Procedure
 Call (RPC) framework that can run in any environment.
 
 Learn more about gRPC in [gRPC.io](https://grpc.io/)
@@ -17,30 +17,11 @@ You must have installed on your machine:
 
 ## Start Up 🛠
 
-There are two option:
+You can run the application as follows:
 
-1. Development
-
-   You can run your application in dev mode:
-
-    ```shell script
-    ./mvnw clean compile quarkus:dev
-    ```
-
-2. Production
-
-   First, the application must be packaged using:
-
-    ```bash
-    ./mvnw package
-    ```
-
-   It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory. Now, the only thing left to do is to
-   run the application:
-
-    ```bash
-    java -jar target/quarkus-app/quarkus-run.jar
-    ```
+```bash
+./mvnw spring-boot:run
+```
 
 ## Testing 🔍
 

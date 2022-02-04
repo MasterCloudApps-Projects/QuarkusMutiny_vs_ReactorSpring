@@ -1,0 +1,13 @@
+package es.urjc.spring.rest.client;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ReactiveSpringRestClientApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ReactiveSpringRestClientApplication.class, args);
+    }
+
+}
