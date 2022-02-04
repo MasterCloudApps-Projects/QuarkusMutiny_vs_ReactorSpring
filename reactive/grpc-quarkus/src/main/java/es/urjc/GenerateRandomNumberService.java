@@ -1,4 +1,4 @@
-package urjc.mastercloudapps.quarkus.quarkus.examples;
+package es.urjc;
 
 import io.quarkus.grpc.GrpcService;
 import io.smallrye.mutiny.Uni;

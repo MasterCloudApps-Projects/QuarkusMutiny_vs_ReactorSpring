@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "urjc.mastercloudapps.quarkus.spring.examples";
+option java_package = "es.urjc";
 option java_outer_classname = "GeneratorProto";
 
 package generator;
