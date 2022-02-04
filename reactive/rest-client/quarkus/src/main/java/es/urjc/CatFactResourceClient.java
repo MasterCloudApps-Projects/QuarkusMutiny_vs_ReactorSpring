@@ -1,5 +1,6 @@
-package es.urjc.rest.client;
+package es.urjc;
 
+import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.GET;
@@ -13,5 +14,5 @@ public interface CatFactResourceClient {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    CatFact getFact();
+    Uni<CatFact> getFact();
 }

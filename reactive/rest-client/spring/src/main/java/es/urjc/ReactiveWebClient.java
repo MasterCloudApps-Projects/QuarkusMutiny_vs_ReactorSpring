@@ -1,4 +1,4 @@
-package es.urjc.spring.rest.client;
+package es.urjc;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

@@ -1,4 +1,4 @@
-package es.urjc.rest.client;
+package es.urjc;
 
 public class CatFact {
 

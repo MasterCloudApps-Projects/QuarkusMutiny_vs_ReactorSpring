@@ -1,8 +1,9 @@
-package es.urjc.spring.rest.client;
+package es.urjc;
 
 public class CatFact {
 
     private String fact;
+
     private int length;
 
     public CatFact(String fact, int length) {
