@@ -1,10 +1,11 @@
 # Quarkus Framework VS Spring Framework
 
-This repository wants to compare a modern framework like [Quarkus](https://quarkus.io/) and a mature and stable framework like [Spring](https://spring.io/).
 
-We want to show that Quarkus can be a good candidate to create applications because it is as easy as Spring Boot, because of its low configuration and speed to be taken to a productive environment.
+The idea behind this repository is to expose a comparison between the freshness and cutting edge technology offered by [Quarkus](https://quarkus.io/) versus the maturity and stability provided by [Spring](https://spring.io/).
 
-Here, we are going to deal with two flavors, the imperative part which is the most used, and the reactive part which is the less used but little by little is gaining weight.
+On the other hand, it is also intended to emphasize that **Quarkus** can be a good candidate when creating applications, the low level of configuration required and the great flexibility and speed of promoting it to a productive environment makes it an equal or even better option than **Spring**.
+
+The comparison is offered in two different flavors, one is the **imperative** approach, which is widely used in a large number of applications, and the other is the **reactive** approach, not so common, but slowly gaining popularity in a large number of use cases.
 
 ## Imperative
 |                |QUARKUS                        |SPRING                       |
