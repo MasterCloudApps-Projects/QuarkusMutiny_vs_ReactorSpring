@@ -1,51 +1,54 @@
-# amqp Project
+# Quarkus and Reactive RabbitMQ
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This project is built using the [Quarkus Framework](https://quarkus.io/) and [SmallRye Reactive Messaging](https://smallrye.io/smallrye-reactive-messaging/smallrye-reactive-messaging/3.4/amqp/amqp.html).
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+Thanks to the SmallRye Reactive Messaging library, the configuration is so easy, we only have to add in the _application.properties_ the incoming and outgoing values, that is to say, from where the events will be published and where it'll be consumed.
 
-## Running the application in dev mode
+We doesn't have to create any queue, exchange or binding, the library does it for us
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+## Set Up ⚙
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+You must have installed on your machine:
+* JDK 11 version
+* Apache Maven 3.8.1
+* Docker
 
-## Packaging and running the application
+## Start Up 🛠
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+There are two option:
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+1. Development
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+    You can run your application in dev mode, Quarkus will start up a RabbitMQ docker container for you:
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+    ```bash
+    ./mvnw clean compile quarkus:dev
+    ```
 
-## Creating a native executable
+2. Production
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
+    For this case, you will responsable to start up a RabbitMQ docker container:
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
+    ```bash
+    docker run --name rabbitmq-tfm -p 5672:5672 -p 15672:15672 -d rabbitmq:3.9.8-management
+    ```
+    
+    Now, the application must be packaged using:
 
-You can then execute your native executable with: `./target/amqp-1.0.0-SNAPSHOT-runner`
+    ```bash
+    ./mvnw package
+    ```
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
+    It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory. Now, the only thing left to do is to run the application:
 
-## Related Guides
+    ```bash
+    java -jar target/quarkus-app/quarkus-run.jar
+    ```
 
+## Testing 🔍
+
+_What does the application do?_ The application consists of writing a city, and depending on the letter that the city starts with, it will return the forecast in upper or lower case.
+
+There is an [user interface](http://localhost:8080/forecast.html), where the user write any city and it'll send the request to the server, this send a message to the RabbitMQ queue, and the city will wait to receive the forecast.
+
+In the meantime, the RabbitMQ listener will receive those messages, according to the name of the city will get a forecast to send it for another queue. This queue is listening for a input stream where the data is immediately sending as "Server-sent events" by http, updating the city forecast.
