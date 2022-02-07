@@ -2,10 +2,12 @@
 
 This project is built using the [Quarkus Framework](https://quarkus.io/).
 
-The application exposes an API Rest, which uses [RESTEasy](https://resteasy.dev/) implementation of the JAX-RS specification, that is connected to MySQL database using *Panache*,
-a library similar to Spring Data JPA, simplifying the most common database operations.
+The application exposes an API Rest, which uses [RESTEasy](https://resteasy.dev/) implementation of the JAX-RS
+specification, that is connected to MySQL database using *Panache*, a library similar to Spring Data JPA, simplifying
+the most common database operations.
 
-Mention Panache has two difference implementations, the repository pattern and the active record pattern, in this example we use the active record pattern, this means that the entity contents all database operations.
+Mention Panache has two difference implementations, the repository pattern and the active record pattern, in this
+example we use the active record pattern, this means that the entity contents all database operations.
 
 Martin Fowler describes it in an [article](https://www.martinfowler.com/eaaCatalog/activeRecord.html) as:
 
@@ -14,6 +16,7 @@ Martin Fowler describes it in an [article](https://www.martinfowler.com/eaaCatal
 ## Set Up ⚙
 
 You must have installed on your machine:
+
 * JDK 11 version
 * Apache Maven 3.8.1
 * Docker
@@ -61,4 +64,5 @@ There are two option:
 
 ## Testing 🔍
 
-The application has an OpenAPI dependency, providing a Swagger interface to make requests against to the API, click [here](http://localhost:8080/swagger-ui/) to test it.
+The application has an OpenAPI dependency, providing a Swagger interface to make requests against to the API,
+click [here](http://localhost:8080/swagger-ui/) to test it.
