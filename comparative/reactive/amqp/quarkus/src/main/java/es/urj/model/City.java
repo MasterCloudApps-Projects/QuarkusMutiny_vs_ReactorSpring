@@ -1,4 +1,4 @@
-package es.urj.amqp.model;
+package es.urj.model;
 
 public class City {
 

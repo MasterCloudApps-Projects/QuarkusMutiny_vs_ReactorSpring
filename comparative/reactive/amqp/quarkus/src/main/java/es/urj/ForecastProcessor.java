@@ -1,7 +1,7 @@
-package es.urj.amqp;
+package es.urj;
 
 
-import es.urj.amqp.model.Forecast;
+import es.urj.model.Forecast;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;

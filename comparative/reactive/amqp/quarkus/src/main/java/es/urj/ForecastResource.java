@@ -1,7 +1,7 @@
-package es.urj.amqp;
+package es.urj;
 
-import es.urj.amqp.model.City;
-import es.urj.amqp.model.Forecast;
+import es.urj.model.City;
+import es.urj.model.Forecast;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import io.smallrye.reactive.messaging.MutinyEmitter;
