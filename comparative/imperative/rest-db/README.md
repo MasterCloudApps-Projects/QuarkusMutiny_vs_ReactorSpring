@@ -24,7 +24,7 @@ Quarkus has Panache for database connection, it's a library similar to Spring Da
 
 Mention Panache has two difference implementations, the active record pattern and the repository pattern
 
-_Active Record Pattern_
+#### _Active Record Pattern_
 
 This pattern delegates all database operations in the entity. Martin Fowler describes it in an [article](https://www.martinfowler.com/eaaCatalog/activeRecord.html) as:
 
@@ -34,7 +34,7 @@ This pattern delegates all database operations in the entity. Martin Fowler desc
 
 As you can see, the entity extends from _PanacheEntityBase_, which contains all the operations, you can also add your own new operations like _findByPage_.
 
-_Repository Pattern_
+#### _Repository Pattern_
 
 In this pattern, all database operations are contented in repository layer, it's so common to see this in Spring Data JPA.
 
@@ -42,7 +42,7 @@ In this pattern, all database operations are contented in repository layer, it's
 
 In this case, there is a class that implements the _PanacheRepository_ interface, which contains the database operations as with Spring Data JPA.
 
-_Spring Data JPA For Quarkus_
+#### _Spring Data JPA For Quarkus_
 
 Quarkus supports differents Spring dependencies, Spring Data JPA is one of [them](https://quarkus.io/guides/spring-data-jpa#more-spring-guides), it works in the same way as if you would use with Spring Framework.
 
