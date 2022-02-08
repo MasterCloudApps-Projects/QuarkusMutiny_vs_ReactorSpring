@@ -42,6 +42,8 @@ In this pattern, all database operations are contented in repository layer, it's
 
 In this case, there is a class that implements the _PanacheRepository_ interface, which contains the database operations as with Spring Data JPA.
 
+You would have noticed that there is an _@ApplicationScoped_ annotation, this is equivalent to the _@Component_ annotation in Spring.
+
 #### _Spring Data JPA For Quarkus_
 
 Quarkus supports differents Spring dependencies, Spring Data JPA is one of [them](https://quarkus.io/guides/spring-data-jpa#more-spring-guides), it works in the same way as if you would use with Spring Framework.
