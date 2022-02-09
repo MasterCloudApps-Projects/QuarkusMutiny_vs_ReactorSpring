@@ -1,8 +1,6 @@
 # Quarkus API Rest and Spring Data JPA
 
-This project is built using the [Quarkus Framework](https://quarkus.io/).
-
-The application exposes an API Rest, which uses [RESTEasy](https://resteasy.dev/) implementation of the JAX-RS specification, that is connected to MySQL database using the (Spring Data JPA dependecy for Quarkus)[https://quarkus.io/guides/spring-data-jpa].
+This application is built using the [Quarkus Framework](https://quarkus.io/), that exposes an API Rest, which uses [RESTEasy](https://resteasy.dev/) implementation of the JAX-RS specification, that is connected to MySQL database using the [Spring Data JPA dependecy for Quarkus](https://quarkus.io/guides/spring-data-jpa).
 
 Quarkus supports differents Spring dependecies, Spring Data JPA is one of [them](https://quarkus.io/guides/spring-data-jpa#more-spring-guides).
 

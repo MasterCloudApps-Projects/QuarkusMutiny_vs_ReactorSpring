@@ -1,10 +1,6 @@
-# Quarkus API Rest and Hibernate ORM with Panache
+# Quarkus API Rest and Hibernate ORM with Panache's Repository Pattern
 
-This project is built using the [Quarkus Framework](https://quarkus.io/).
-
-The application exposes an API Rest, which uses [RESTEasy](https://resteasy.dev/) implementation of the JAX-RS specification, that is connected to MySQL database using *Panache*, a library similar to Spring Data JPA, simplifying the most common database operations.
-
-Mention Panache has two difference implementations, the repository pattern and the active record pattern, in this example we use the repository pattern, this means that all database operations are contented in repository layer, it's so common to see this in Spring Data JPA.
+This application is built using the [Quarkus Framework](https://quarkus.io/), that exposes an API Rest, which uses [RESTEasy](https://resteasy.dev/) implementation of the JAX-RS specification, that is connected to MySQL database using the Panache's _Repository Pattern_.
 
 ## Set Up ⚙
 

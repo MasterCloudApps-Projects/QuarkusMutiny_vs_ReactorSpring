@@ -1,17 +1,6 @@
-# Quarkus API Rest and Hibernate ORM with Panache
+# Quarkus API Rest and Hibernate ORM with Panache's Active Record Pattern
 
-This project is built using the [Quarkus Framework](https://quarkus.io/).
-
-The application exposes an API Rest, which uses [RESTEasy](https://resteasy.dev/) implementation of the JAX-RS
-specification, that is connected to MySQL database using *Panache*, a library similar to Spring Data JPA, simplifying
-the most common database operations.
-
-Mention Panache has two difference implementations, the repository pattern and the active record pattern, in this
-example we use the active record pattern, this means that the entity contents all database operations.
-
-Martin Fowler describes it in an [article](https://www.martinfowler.com/eaaCatalog/activeRecord.html) as:
-
-> An object that wraps a row in a database table or view, encapsulates the database access, and adds domain logic on that data.
+This application is built using the [Quarkus Framework](https://quarkus.io/), that exposes an API Rest, which uses [RESTEasy](https://resteasy.dev/) implementation of the JAX-RS specification, that is connected to MySQL database using the Panache's _Active Record Pattern_.
 
 ## Set Up ⚙
 

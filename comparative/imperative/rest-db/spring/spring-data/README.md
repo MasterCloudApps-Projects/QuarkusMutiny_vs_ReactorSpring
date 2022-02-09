@@ -1,8 +1,6 @@
 # Spring MVC and Spring Data JPA
 
-This project is built using the [Spring Boot](https://spring.io/projects/spring-boot).
-
-The application exposes an API Rest, which uses [Spring MVC](https://docs.spring.io/spring-framework/docs/5.3.15/reference/html/web.html#mvc), that is connected to MySQL database using the [Spring Data JPA](https://spring.io/projects/spring-data) dependecy.
+This application is built using the [Spring Boot](https://spring.io/projects/spring-boot), that exposes an API Rest, which uses [Spring MVC](https://docs.spring.io/spring-framework/docs/5.3.15/reference/html/web.html#mvc), that is connected to MySQL database using the [Spring Data JPA](https://spring.io/projects/spring-data) dependecy.
 
 ## Set Up ⚙
 
