@@ -1,8 +1,6 @@
 # Spring and RabbitMQ
 
-This project is built using the [Spring Boot](https://spring.io/).
-
-The application uses [Spring AMQP](https://spring.io/projects/spring-amqp) dependecy, which simplifies the configuration, we only have to configure the queue, exchange and binding.
+This project is built using the [Spring Boot](https://spring.io/) and [Spring AMQP](https://spring.io/projects/spring-amqp) dependency.
 
 ## Set Up ⚙
 

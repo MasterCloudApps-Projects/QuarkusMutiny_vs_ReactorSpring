@@ -1,10 +1,6 @@
 # Quarkus and RabbitMQ
 
-This project is built using the [Quarkus Framework](https://quarkus.io/).
-
-The application uses RabbitMQ as AMQP messaging, in this case, the Maven dependency used belongs to "Quarkus Universe", that is, someone from the Quarkus community has created it, and it hasn't been created by the Quarkus core development team.
-
-But why don't we use the "official" dependency? because the official one is based on reactive implementation.
+This project is built using the [Quarkus Framework](https://quarkus.io/) and [quarkus-rabbitmq-client](https://github.com/quarkiverse/quarkus-rabbitmq-client) dependency.
 
 ## Set Up ⚙
 
