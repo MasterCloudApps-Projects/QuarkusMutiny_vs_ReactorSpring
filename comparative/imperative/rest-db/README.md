@@ -58,3 +58,6 @@ How it's well known, Spring uses the [Spring Data JPA](https://spring.io/project
 ![Spring Data JPA](_screenshots/spring-data-jpa.jpeg)
 
 If we look at the image above, we can see that there is no difference in using this dependency.
+
+## Conclusion
+Both Frameworks are good options, and although Spring only allows you to approach it in one way, it does it in a powerful, easy and elegant way. While Quarkus is a bit more flexible but less powerful. Using one or the other will depend on your needs.
