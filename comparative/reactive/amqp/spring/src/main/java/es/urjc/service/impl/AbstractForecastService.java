@@ -16,16 +16,15 @@ import java.io.IOException;
 
 public abstract class AbstractForecastService implements ForecastService {
 
-    final Sender sender;
-    final Receiver receiver;
-    final ObjectMapper objectMapper;
+    private final Sender sender;
+    private final Receiver receiver;
+    private final ObjectMapper objectMapper;
 
     protected AbstractForecastService(Sender sender, Receiver receiver, ObjectMapper objectMapper) {
         this.sender = sender;
         this.receiver = receiver;
         this.objectMapper = objectMapper;
     }
-
 
     protected abstract String getExchange();
 
@@ -35,11 +34,9 @@ public abstract class AbstractForecastService implements ForecastService {
 
     @Override
     public void send(Forecast forecast) {
-        //public Mono<Void> send(Mono<Forecast> forecast) {
-
         Mono.just(forecast)
-                .map(forecast1 -> new OutboundMessage(this.getExchange(), this.getRoutingKey(), this.serializeObject(forecast1)))
-                .publish(sender::send).log()
+                .map(this::generateOutboundMessage)
+                .publish(sender::send)
                 .subscribe();
     }
 
@@ -50,7 +47,7 @@ public abstract class AbstractForecastService implements ForecastService {
                 .map(this::deserializeObject);
     }
 
-    public OutboundMessage generate(Forecast forecast) {
+    public OutboundMessage generateOutboundMessage(Forecast forecast) {
         return new OutboundMessage(this.getExchange(), this.getRoutingKey(), this.serializeObject(forecast));
     }
 

@@ -14,8 +14,8 @@ import java.util.UUID;
 @RequestMapping("/forecast")
 public class ForecastController {
 
-    final ForecastService processForecastService;
-    final ForecastService processedForecastService;
+    private final ForecastService processForecastService;
+    private final ForecastService processedForecastService;
 
     public ForecastController(ForecastService processForecastService, ForecastService processedForecastService) {
         this.processForecastService = processForecastService;

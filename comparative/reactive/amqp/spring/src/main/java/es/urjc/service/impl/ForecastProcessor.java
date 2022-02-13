@@ -21,7 +21,6 @@ public class ForecastProcessor {
 
     private final ForecastService processForecastService;
     private final ForecastService processedForecastService;
-    ;
 
     public ForecastProcessor(ForecastService processForecastService, ForecastService processedForecastService) {
         this.processForecastService = processForecastService;

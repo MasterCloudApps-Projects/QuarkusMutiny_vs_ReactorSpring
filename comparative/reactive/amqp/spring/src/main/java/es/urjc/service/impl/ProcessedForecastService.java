@@ -10,7 +10,7 @@ import reactor.rabbitmq.Sender;
 @Service
 public class ProcessedForecastService extends AbstractForecastService {
 
-    final Binding processedForecastBinding;
+    private final Binding processedForecastBinding;
 
     public ProcessedForecastService(Sender sender, Receiver receiver, ObjectMapper objectMapper, Binding processedForecastBinding) {
         super(sender, receiver, objectMapper);
