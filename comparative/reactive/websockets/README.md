@@ -42,4 +42,4 @@ Both Quarkus and Spring don't offer a solution similar to the imperative impleme
 
 On the Quarkus side, in some ways it's simpler and more elegant, but seeing that it isn't very flexible as it isn't able to have variable paths. It is necessary to evaluate for which cases to use it and which not. In this example, this is a case where it isn't good to use it. A positive thing is that this approach is the same as with Reactive AMQP, so if you have previously understood how it works, it will be easier to understand.
 
-In the Spring case, it handles route handling easily and you only have to add the desired behaviour afterwards. Also, no two WebSockets, when the client closes the connection the Server side detects this event and it can be handled as desired.
+In the Spring case, it handles route handling easily and you only have to add the desired behaviour afterwards. Also, it isn't necessary to create two WebSockets, when the client closes the connection the Server side detects this event and it can be handled as desired.
