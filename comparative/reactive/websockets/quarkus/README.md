@@ -2,10 +2,9 @@
 
 This project is based to [Quarkus](https://quarkus.io/).
 
-The application provides an user interface where the user can see how many users are connected in that moment. 
-
-If you look at the implementation it's absoluly different that imperative implementation, the reason is that uses [SmallRye Reactive Messaging](https://smallrye.io/smallrye-reactive-messaging/smallrye-reactive-messaging/3.13/index.html) based on event-driven, data streaming, and event-sourcing applications
-
+If you look at the implementation it's absoluly different that imperative implementation, the reason is that
+uses [SmallRye Reactive Messaging](https://smallrye.io/smallrye-reactive-messaging/smallrye-reactive-messaging/3.13/index.html)
+based on event-driven, data streaming, and event-sourcing applications.
 
 ## Set Up ⚙
 
@@ -43,4 +42,4 @@ There are two option:
 ## Testing 🔍
 
 The project provides user interface to [try it](http://localhost:8080). You can open some tabs in your browser, connect
-with different names and send some messages to see how it works
+with different names and you will see how many users are connected in that moment.
