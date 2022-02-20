@@ -19,7 +19,7 @@ If you already have it installed, you must run the following command:
 docker run --name mysql-tfm -d -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=imdb -p 3306:3306 mysql:8.0.26
 ```
 
-Next, you should wait a few seconds (5s - 10s) for MySQL will finish booting. Now, you need to [download](https://raw.githubusercontent.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/main/imperative/rest-db/imdb_movies.sql) the script for the database, then you can execute the following command:
+Next, you should wait a few seconds (5s - 10s) for MySQL will finish booting. Now, you need to [download](https://raw.githubusercontent.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/main/reactive/rest-db/imdb_movies.sql) the script for the database, then you can execute the following command:
 
 ```bash
 docker exec -i mysql-tfm mysql -uroot -ppassword imdb < imdb_movies.sql
