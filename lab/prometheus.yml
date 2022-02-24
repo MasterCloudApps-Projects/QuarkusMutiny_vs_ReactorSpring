@@ -10,14 +10,26 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: 'quarkus'
+  - job_name: 'quarkus-imperative'
     scrape_interval: 5s
     metrics_path: /q/metrics
     static_configs:
       - targets: ['docker.for.mac.localhost:8080']
 
-  - job_name: 'quarkus-mutiny'
+  - job_name: 'spring-imperative'
+    scrape_interval: 5s
+    metrics_path: /s/prometheus
+    static_configs:
+      - targets: ['docker.for.mac.localhost:8081']
+
+  - job_name: 'quarkus-reactive'
     scrape_interval: 5s
     metrics_path: /q/metrics
     static_configs:
-      - targets: ['docker.for.mac.localhost:8081']
+      - targets: ['docker.for.mac.localhost:8090']
+
+  - job_name: 'spring-reactive'
+    scrape_interval: 5s
+    metrics_path: /s/prometheus
+    static_configs:
+      - targets: ['docker.for.mac.localhost:8091']
