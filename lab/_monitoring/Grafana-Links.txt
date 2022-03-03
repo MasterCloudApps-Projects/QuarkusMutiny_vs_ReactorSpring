@@ -1,0 +1,5 @@
+http://localhost:3000/d/BO1rnDA7k/jvm-micrometer?orgId=1&from=1646332663086&to=1646333186342&var-application=quarkus-imperative&var-instance=docker.for.mac.localhost:8080&var-jvm_memory_pool_heap=All&var-jvm_memory_pool_nonheap=All
+http://localhost:3000/d/BO1rnDA7k/jvm-micrometer?orgId=1&from=1646333214079&to=1646333751124&var-application=spring-imperative&var-instance=docker.for.mac.localhost:8081&var-jvm_memory_pool_heap=All&var-jvm_memory_pool_nonheap=All
+
+http://localhost:3000/d/BO1rnDA7k/jvm-micrometer?orgId=1&from=1646333703767&to=1646334278382&var-application=quarkus-reactive&var-instance=docker.for.mac.localhost:8090&var-jvm_memory_pool_heap=All&var-jvm_memory_pool_nonheap=All
+http://localhost:3000/d/BO1rnDA7k/jvm-micrometer?orgId=1&from=1646334225804&to=1646334779651&var-application=spring-reactive&var-instance=docker.for.mac.localhost:8091&var-jvm_memory_pool_heap=All&var-jvm_memory_pool_nonheap=All

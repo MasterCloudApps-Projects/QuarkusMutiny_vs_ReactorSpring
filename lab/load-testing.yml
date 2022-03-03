@@ -1,0 +1,69 @@
+config:
+  target: "http://localhost:8080"
+  http:
+    pool: 10
+    timeout: 2
+  phases:
+    - duration: 20
+      arrivalRate: 5
+      name: 5 user/sec
+    - duration: 40
+      arrivalRate: 5
+      rampTo: 50
+      name: Ramp to 50 users
+    - duration: 30
+      arrivalRate: 50
+      name: 50 users/sec
+    - duration: 30
+      arrivalRate: 50
+      rampTo: 150
+      name: Ramp to 150 users
+    - duration: 30
+      arrivalRate: 150
+      name: 150 users/sec
+    - duration: 30
+      arrivalRate: 150
+      rampTo: 200
+      name: Ramp to 200 users
+    - duration: 30
+      arrivalRate: 200
+      name: 200 users/sec
+    - duration: 30
+      arrivalRate: 200
+      rampTo: 300
+      name: Ramp to 300 users
+    - duration: 30
+      arrivalRate: 300
+      name: 300 users/sec
+
+scenarios:
+  - name: Get movies by id
+    weight: 5
+    flow:
+    - get:
+        url: "/movies/{{$randomNumber(1,999)}}"
+  - name: Get movies by page
+    weight: 2
+    flow:
+    - get:
+        url: "/movies?page={{$randomNumber(1,50)}}"
+  - name: Save new movie
+    weight: 2
+    flow:
+    - post:
+        url: "/movies"
+        json:
+            poster: "{{$randomString()}}"
+            title: "{{$randomString()}}"
+            releasedYear: "{{$randomNumber(1950,2020)}}"
+            certificate: "{{$randomString()}}"
+            runtime: "{{$randomString()}}"
+            genre: "{{$randomString()}}"
+            rating: "0.0"
+            overview: "{{$randomString()}}"
+            director: "{{$randomString()}}"
+  - name: Delete a movie by id
+    weight: 1
+    flow:
+    - delete:
+        url: "/movies/{{$randomNumber(1,999)}}"
