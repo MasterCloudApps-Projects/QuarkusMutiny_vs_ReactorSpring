@@ -35,20 +35,27 @@ config:
     - duration: 30
       arrivalRate: 300
       name: 300 users/sec
+    - duration: 30
+      arrivalRate: 300
+      rampTo: 400
+      name: Ramp to 400 users
+    - duration: 30
+      arrivalRate: 400
+      name: 400 users/sec
 
 scenarios:
   - name: Get movies by id
-    weight: 5
+    weight: 70
     flow:
     - get:
         url: "/movies/{{$randomNumber(1,999)}}"
   - name: Get movies by page
-    weight: 2
+    weight: 20
     flow:
     - get:
         url: "/movies?page={{$randomNumber(1,50)}}"
   - name: Save new movie
-    weight: 2
+    weight: 9
     flow:
     - post:
         url: "/movies"
