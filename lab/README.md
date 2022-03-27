@@ -17,9 +17,11 @@ The procedure has been to start the application, leave it quiet for 1 minute, la
 ## Where have they been tested?
 To provide a better comparison, these tests were run on two different machines:
 
-> MacBook Pro 13'' (2017) running macOS Monterey OS.
+```
+MacBook Pro 13'' (2017) running macOS Monterey OS.
 Processor: 3.1 GHz dual-core Intel Core i5
 Memory 16GB 2133 MHz LPDDR3
+```
 
 * Izan's PC to be defined
 
