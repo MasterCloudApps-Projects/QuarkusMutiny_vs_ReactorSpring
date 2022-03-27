@@ -1,5 +1,5 @@
 # Analysis Spring vs Quarkus Imperative
-If you want to see all detatils about load test data and JVM metrics can be found [here]().
+If you want to see all detatils about load test data and JVM metrics can be found [here](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/lab/imperative/metrics/macbook-pro).
 
 ## HTTP Performance
 These are the results obtained using Artillery tool to load the application.
@@ -95,24 +95,51 @@ Regarding the amount of maximum supported requests between the two also huge, Sp
 </tbody>
 </table>
 
+On the time of requests completed by both, Quarkus gives better response times, being 2.5 times faster if we set p95 as a more realistic measure. In any case, Quarkus response times are much better. This table show the number of times better response time of Quarkus over Spring.
+
 |        	| Number of times better response time of Quarkus over Spring 	|
 |--------	|:------------------------------------------------------------	|
 | Median 	|                                                         3,28 	|
 | p95    	|                                                         2,79 	|
 | p99    	|                                                         1,91 	|
 
-On the time of requests completed by both, Quarkus gives better response times, being 2.5 times faster if we set p95 as a more realistic measure.
 
 (1) To be more specific, the problem lies in Hikari's connection management.
 
 ## JVM metrics
 At this point, we can see that the total percentage of heap/non-heap usage is quite similar, being slightly better on the Quarkus side. If we compare the CPU usage they are almost identical, but considering that the Spring application broke at the beginning of the test and wasn't able to report its metrics, we can't take that measurement for good, we believe it would be higher as that 15.5% only reflects when the application was stable without much load.
 
-About the amount of MB used by the JVM heap/non-heap and JVM total, we can deduce that Quarkus consumes 78% compared than Spring. And if we look at the metaspace memory it goes in the same direction, with Spring consuming more resources.
+_Spring CPU Usage_
+![Spring CPU Usage](images/spring-cpu.png)
+
+_Quarkus CPU Usage_
+![Quarkus CPU Usage](images/quarkus-cpu.png)
+
+About the amount of MB used by the JVM heap/non-heap and JVM total, we can deduce that Quarkus consumes 78% compared than Spring.
+
+_Spring JVM_
+![Spring CPU Usage](images/spring-jvm.png)
+
+_Quarkus JVM_
+![Quarkus CPU Usage](images/quarkus-jvm.png)
+
+And if we look at the metaspace memory it goes in the same direction, with Spring consuming more resources.
+
+_Spring JVM Metaspace_
+![Spring ](images/spring-metaspace.png)
+
+_Quarkus JVM Metaspace_
+![Quarkus CPU Usage](images/quarkus-metaspace.png)
 
 We can also observe that there is also a difference in the number of classes between both, where Quarkus loads 73.5% of the classes needed by Spring.
 
-Finally, the number of live threads and although both reach 213 threads, the same behaviour is observed in Spring, increasing rapidly the number of threads shortly after starting the test, in comparison, Quarkus remains more stable until it reaches a point where the application can no longer run.
+Finally, the number of live threads and although both reach 213 threads, but we do not know how the threads behave, in comparison, Quarkus remains more stable until it reaches a point where the application can no longer run.
+
+_Spring Threads_
+![Spring CPU Usage](images/spring-threads.png)
+
+_Quarkus Threads_
+![Quarkus CPU Usage](images/quarkus-threads.png)
 
 # Conclusion
 For some reason, with the default configuration of the Spring application it has problems with database connection management (at least on this machine), causing it to break much earlier than expected, and therefore the concurrent request data isn't very reliable.
