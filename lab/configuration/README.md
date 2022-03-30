@@ -5,7 +5,7 @@ First, you have to start a container with a MySQL image:
 ```sh
 docker run --name mysql-tfm -d -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=imdb -p 3306:3306 mysql:8.0.26
 ```
-Then, download the file [imdb_movies.sql](), and execute the following command to populate the database:
+Then, download the file [imdb_movies.sql](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/blob/main/comparative/imperative/rest-db/imdb_movies.sql), and execute the following command to populate the database:
 
 ```sh
 docker exec -i mysql-tfm mysql -uroot -ppassword imdb < imdb_movies.sql
@@ -29,7 +29,7 @@ To see the data collected by prometheus in grafana it's also necessary to start 
 docker run -d --name grafana-lab -p 3000:3000 grafana/grafana-enterprise
 ```
 
-Once you have the Grafana container running, you can access it [here](http://localhost:3000). Now, you need to configure Prometheus as data source, for that, I recommend you to follow these [instructions](https://prometheus.io/docs/visualization/grafana/). When you have it configured, import this [dashboard](https://grafana.com/grafana/dashboards/4701)
+Once you have the Grafana container running, you can access it [here](http://localhost:3000). Now, login using admin/admin (username/password) you need to configure Prometheus as data source, for that, I recommend you to follow these [instructions](https://prometheus.io/docs/visualization/grafana/). When you have it configured, import this [dashboard](https://grafana.com/grafana/dashboards/4701)
 
 ## Launch load testing 🔥
 
