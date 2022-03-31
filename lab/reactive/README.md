@@ -1,5 +1,8 @@
 # Analysis Spring vs Quarkus Reactive
-If you want to see all details about load test data and JVM metrics can be found [here](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/lab/reactive/metrics/macbook-pro-16gb).
+If you want to see all the details for both machines about load test data and JVM metrics can be found here:
+
+- [Macbook Pro 16 GB](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/lab/reactive/metrics/macbook-pro-16gb).
+- [Macbook Pro 8 GB](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/lab/reactive/metrics/macbook-pro-8gb).
 
 ## HTTP Performance
 These are the results obtained using Artillery tool to load the application.
