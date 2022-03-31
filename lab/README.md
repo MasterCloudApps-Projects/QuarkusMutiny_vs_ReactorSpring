@@ -18,12 +18,16 @@ The procedure has been to start the application, leave it quiet for 1 minute, la
 To provide a better comparison, these tests were run on two different machines:
 
 ```
-MacBook Pro 13'' (2017) running macOS Monterey OS.
+MacBook Pro 13" (2017) running macOS Monterey OS.
 Processor: 3.1 GHz dual-core Intel Core i5
 Memory 16GB 2133 MHz LPDDR3
 ```
 
-* Izan's PC to be defined
+```
+MacBook Pro 13" (2017) running macOS Monterey OS.
+Processor: 2.3 GHz dual-core Intel Core i5
+Memory 8GB 2133 MHz LPDDR3
+```
 
 ## What data are we going to look at?
 Although we have more metrics collected by micrometer we are going to focus on: request response times, nnumber of concurrent requests, CPU usage, JVM heap/non-heap, JVM metaspace, number of threads and classes loaded.

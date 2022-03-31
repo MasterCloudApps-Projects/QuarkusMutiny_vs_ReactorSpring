@@ -1,5 +1,5 @@
 # Analysis Spring vs Quarkus Imperative
-If you want to see all detatils about load test data and JVM metrics can be found [here](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/lab/imperative/metrics/macbook-pro).
+If you want to see all detatils about load test data and JVM metrics can be found [here](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/tree/main/lab/imperative/metrics/macbook-pro-16gb).
 
 ## HTTP Performance
 These are the results obtained using Artillery tool to load the application.
