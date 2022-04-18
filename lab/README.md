@@ -1,3 +1,4 @@
+# Performance Lab
 This section has been created to focus on the performance of both frameworks and observe how they manage the JVM. We have chosen to start from the rest-db project, because we believe it's the most representative example of the day to day.
 
 The rest-db project isn't 100% the same, we have added the micrometer maven dependencies in order to obtain the JVM metrics, and we have also removed the dependencies such as swagger because we want it to be as clean as possible.

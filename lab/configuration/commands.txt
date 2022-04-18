@@ -1,4 +1,0 @@
-docker exec -i tfm-mysql mysql -u root -p password
-docker exec -i mysql-tfm mysql -uroot -ppassword imdb < imdb_movies.sql
-artillery run -t http://localhost:8081 load-testing.yml -o spring-test.json
-artillery report spring-reactive-report02.json

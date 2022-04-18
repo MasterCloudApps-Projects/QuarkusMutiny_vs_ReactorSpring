@@ -5,7 +5,7 @@ First, you have to start a container with a MySQL image:
 ```sh
 docker run --name mysql-tfm -d -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=imdb -p 3306:3306 mysql:8.0.26
 ```
-Then, download the file [imdb_movies.sql](https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/blob/main/comparative/imperative/rest-db/imdb_movies.sql), and execute the following command to populate the database:
+Then, you should wait a few seconds (5s - 10s) for MySQL will finish booting. Now, you need to [download] (https://github.com/MasterCloudApps-Projects/QuarkusMutiny_vs_ReactorSpring/blob/main/setup/imdb_movies.sql) the script for the database, and execute the following command to populate the database:
 
 ```sh
 docker exec -i mysql-tfm mysql -uroot -ppassword imdb < imdb_movies.sql
