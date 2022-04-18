@@ -6,4 +6,5 @@ This repository is divided into two parts, a part where a comparison is made at 
 
 ## Contact
 👤 [Izan Santana Alonso](mailto:ethanmmd@gmail.com)
+
 👤 [Diego Fernandez Aceves](mailto:dfera10@gmail.com)
