@@ -1,4 +1,6 @@
-create table movies
+drop table if exists imdb.movies;
+
+create table if not exists imdb.movies
 (
     id           bigint auto_increment
         primary key,
