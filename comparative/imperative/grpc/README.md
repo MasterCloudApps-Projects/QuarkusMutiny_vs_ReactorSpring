@@ -1,4 +1,4 @@
-# gRPC
+# Imperative gRPC
 
 In this comparison we will look at the main differences between Quarkus and Spring when implementing gRPC servers that do not require reactive behaviour.
 

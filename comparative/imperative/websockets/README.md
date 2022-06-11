@@ -1,4 +1,4 @@
-# WebSockets
+# Imperative WebSockets
 
 Here, we are going to see how different Quarkus solution is compared to Spring.
 

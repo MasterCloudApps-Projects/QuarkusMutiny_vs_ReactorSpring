@@ -1,4 +1,4 @@
-# Reactive REST to REST
+# Reactive HTTP Rest Client
 
 In this comparison we will look at the main differences between Quarkus and Spring when implementing rest clients that do require reactive behaviour.
 

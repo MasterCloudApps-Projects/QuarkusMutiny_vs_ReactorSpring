@@ -1,4 +1,4 @@
-# AMQP
+# Imperative AMQP
 
 In this section, we are going to compare how the different are between Spring and Quarkus using RabbitMQ.
 

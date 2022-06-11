@@ -1,4 +1,4 @@
-# REST to DB
+# Imperative HTTP Service and Persistence
 
 In this section, we are going to see the differences between Spring and Quarkus in the controller and persistence layer, but the main difference is that Quarkus does not require an Application class with a main method as Spring does.
 

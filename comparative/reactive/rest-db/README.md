@@ -1,4 +1,4 @@
-# REST to DB
+# Reactive HTTP Service and Persistence
 
 In this section, we are going to see the differences between Spring and Quarkus in the controller and persistence layer. The main difference is the reactive part. Spring makes use of [Spring Webflux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux), which internally uses the Reactor library based on the [Project Reactor](https://projectreactor.io/), thus using the Mono and Flux types. Quarkus on the other hand relies on [Mutiny](https://smallrye.io/smallrye-mutiny/), using Mono and Multi types.
 
